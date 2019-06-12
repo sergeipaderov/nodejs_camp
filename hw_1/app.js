@@ -11,8 +11,8 @@ createNewFolder();
 function copyFiles(file, localFolder) {
   const folderName = file.charAt(0).toUpperCase();
 
-  if (!fs.existsSync(path.normalize(`/home/serg/dev/nodejs_camp/hw_1/${toFolder}/${folderName}`))) {
-    fs.mkdirSync(path.normalize(`/home/serg/dev/nodejs_camp/hw_1/${toFolder}/${folderName}`));
+  if (!fs.existsSync(path.normalize(`./${toFolder}/${folderName}`))) {
+    fs.mkdirSync(path.normalize(`./${toFolder}/${folderName}`));
   }
   fs.copyFile(localFolder, path.join(__dirname, toFolder, folderName, file), err => {
     if (err) {
@@ -24,8 +24,8 @@ function copyFiles(file, localFolder) {
 }
 
 function createNewFolder() {
-  if (!fs.existsSync(path.normalize(`/home/serg/dev/nodejs_camp/hw_1/${toFolder}`))) {
-    fs.mkdirSync(path.normalize(`/home/serg/dev/nodejs_camp/hw_1/${toFolder}`));
+  if (!fs.existsSync(path.normalize(`./${toFolder}`))) {
+    fs.mkdirSync(path.normalize(`./${toFolder}`));
     console.log(`Created new folder: ${toFolder}`);
   } else {
     console.log(`Directory "${toFolder}" already exist. Try another name for folder`);
@@ -37,7 +37,7 @@ function readDir(folder) {
   fs.readdir(folder, (err, folders) => {
     if (err) {
       console.log(`Output directory - "${folder}" is not exist. Try again!`);
-      fs.rmdirSync(path.normalize(`/home/serg/dev/nodejs_camp/hw_1/${toFolder}`));
+      fs.rmdirSync(path.normalize(`./${toFolder}`));
       process.exit(0);
     }
     folders.forEach(item => {
